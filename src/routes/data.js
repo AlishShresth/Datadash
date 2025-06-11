@@ -22,6 +22,7 @@ router.post('/upload-csv', upload.single('file'), async (req, res, next) => {
       .on('data', (data) => results.push(data))
       .on('end', async () => {
         // insert data into PostgreSQL
+        logger.info(`Processing CSV: ${req.file.filename}`);
         const client = await pool.connect();
         try {
           await client.query('BEGIN');

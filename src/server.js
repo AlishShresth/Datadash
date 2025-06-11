@@ -3,8 +3,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const { v4: uuidv4 } = require('uuid');
 const logger = require('./utils/logger');
-const dataRoutes = require('./routes/data');
 require('dotenv').config();
+const dataRoutes = require('./routes/data');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -39,5 +39,5 @@ app.use((err, req, res, next) => {
 
 // start server
 app.listen(PORT, () => {
-  logger.log(`Server running on port ${PORT}`);
+  logger.info(`Server running on port ${PORT}`);
 });
